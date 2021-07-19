@@ -13,6 +13,8 @@ test_that("reveal_secret works, mocking 2", {
   expect_message(reveal_secret("top-secret"), "Nothing")
 })
 
-test_that("reveal_secret works, will fail", {
-  expect_message(reveal_secret("top-secret"), "Nothing")
+test_that("reveal_secret works, mocking 3", {
+  mockery::stub(where = reveal_secret, what = "ask", how = NULL)
+  expect_error(reveal_secret("top-secret"), "needed")
 })
+

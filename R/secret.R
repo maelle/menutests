@@ -1,4 +1,7 @@
 reveal_secret <- function(secret, ok = ask()) {
+  if (is.null(ok)) {
+    stop("A value is needed for `ok` see ?reveal_secret")
+  }
   if (ok) {
     message(secret)
   } else {
